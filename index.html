@@ -6,7 +6,6 @@
   <title>IT Support Complaint Form – Moustache Hospitality</title>
 
   <style>
-    /* ───── RESET & BASE ───── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Segoe UI', Arial, sans-serif;
@@ -14,8 +13,6 @@
       min-height: 100vh;
       padding: 2rem 1rem;
     }
-
-    /* ───── CARD ───── */
     .card {
       max-width: 680px;
       margin: 0 auto;
@@ -24,8 +21,6 @@
       overflow: hidden;
       box-shadow: 0 4px 24px rgba(0,0,0,0.10);
     }
-
-    /* ───── HEADER ───── */
     .form-header {
       background: linear-gradient(135deg, #185FA5 0%, #1D9E75 100%);
       padding: 2rem 2rem 1.75rem;
@@ -43,11 +38,7 @@
       font-weight: 600;
       color: #fff;
     }
-
-    /* ───── BODY ───── */
     .form-body { padding: 1.75rem 2rem 2rem; }
-
-    /* ───── SECTION PILLS ───── */
     .section-row {
       display: flex;
       align-items: center;
@@ -66,8 +57,6 @@
     .pill-green { background: #EAF3DE; color: #27500A; }
     .pill-amber { background: #FAEEDA; color: #633806; }
     .section-line { flex: 1; height: 1px; background: #e5e7eb; }
-
-    /* ───── FORM GRID ───── */
     .form-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -75,8 +64,6 @@
     }
     .fg { display: flex; flex-direction: column; gap: 5px; }
     .fg.full { grid-column: 1 / -1; }
-    .fg.full-row { grid-column: 1 / -1; }
-
     label {
       font-size: 12px;
       font-weight: 600;
@@ -84,7 +71,6 @@
       letter-spacing: 0.2px;
     }
     .req { color: #E24B4A; }
-
     input, select, textarea {
       width: 100%;
       padding: 9px 13px;
@@ -103,8 +89,6 @@
     }
     textarea { resize: vertical; min-height: 80px; }
     input[readonly] { background: #f9fafb; color: #888; cursor: not-allowed; }
-
-    /* ───── CATEGORY DROPDOWN ───── */
     .cat-sub-details {
       display: none;
       margin-top: 10px;
@@ -133,8 +117,6 @@
     .tag-tel  { background: #FDE8F5; color: #7A1A5A; }
     .tag-data { background: #E8F5F0; color: #145C3E; }
     .tag-other{ background: #F3F4F6; color: #444; }
-
-    /* ───── ADD MORE BUTTON ───── */
     .add-more-btn {
       font-size: 12px;
       color: #185FA5;
@@ -146,11 +128,7 @@
       text-align: left;
     }
     .add-more-btn:hover { text-decoration: underline; }
-
-    /* ───── ERROR ───── */
     .err { font-size: 11px; color: #A32D2D; display: none; margin-top: 2px; }
-
-    /* ───── BUTTONS ───── */
     .btn-row {
       display: flex;
       justify-content: flex-end;
@@ -183,8 +161,6 @@
     }
     .btn-submit:hover { opacity: 0.88; }
     .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; }
-
-    /* ───── SUCCESS ───── */
     .success-box {
       display: none;
       background: #EAF3DE;
@@ -196,8 +172,6 @@
     }
     .ticket-id { font-weight: 700; font-size: 16px; color: #27500A; margin-bottom: 6px; }
     .success-box p { font-size: 13px; color: #3B6D11; line-height: 1.7; }
-
-    /* ───── ERROR BOX ───── */
     .error-box {
       display: none;
       background: #FCEBEB;
@@ -208,8 +182,6 @@
       text-align: center;
     }
     .error-box p { font-size: 13px; color: #791F1F; line-height: 1.6; }
-
-    /* ───── MODAL ───── */
     .modal-overlay {
       display: none;
       position: fixed;
@@ -240,8 +212,6 @@
       border: none; border-radius: 8px;
       background: #185FA5; color: #fff; cursor: pointer; font-family: inherit;
     }
-
-    /* ───── SPINNER ───── */
     .spinner {
       display: inline-block;
       width: 14px; height: 14px;
@@ -253,8 +223,6 @@
       margin-right: 6px;
     }
     @keyframes spin { to { transform: rotate(360deg); } }
-
-    /* ───── RESPONSIVE ───── */
     @media (max-width: 540px) {
       .form-grid { grid-template-columns: 1fr; }
       .fg.full { grid-column: 1; }
@@ -274,7 +242,7 @@
   <!-- BODY -->
   <div class="form-body">
 
-    <!-- ── EMPLOYEE DETAILS ── -->
+    <!-- EMPLOYEE DETAILS -->
     <div class="section-row">
       <span class="section-pill pill-blue">Employee details</span>
       <div class="section-line"></div>
@@ -307,19 +275,19 @@
       <div class="fg">
         <label>Department <span class="req">*</span></label>
         <select id="f-dept"><option value="">Select department</option></select>
-        <button class="add-more-btn" onclick="openModal('dept')">+ Add new department</button>
+        <button class="add-more-btn" type="button" onclick="openModal('dept')">+ Add new department</button>
         <span class="err" id="e-dept">Required field</span>
       </div>
 
       <div class="fg">
         <label>Location <span class="req">*</span></label>
         <select id="f-loc"><option value="">Select location</option></select>
-        <button class="add-more-btn" onclick="openModal('loc')">+ Add new location</button>
+        <button class="add-more-btn" type="button" onclick="openModal('loc')">+ Add new location</button>
         <span class="err" id="e-loc">Required field</span>
       </div>
     </div>
 
-    <!-- ── ISSUE DETAILS ── -->
+    <!-- ISSUE DETAILS -->
     <div class="section-row">
       <span class="section-pill pill-green">Issue details</span>
       <div class="section-line"></div>
@@ -391,20 +359,17 @@
             <option value="__add_more__">➕ Add custom category...</option>
           </optgroup>
         </select>
-        <button class="add-more-btn" id="add-cat-btn" style="display:none" onclick="openCatModal()">➕ Add custom category</button>
         <span class="err" id="e-cat">Please select a category</span>
-
-        <!-- Sub-details panel -->
         <div class="cat-sub-details" id="cat-sub-details">
           <span class="cat-tag" id="cat-tag-badge"></span>
-          <label>Additional details <span style="font-weight:400;color:#888;">(optional — describe further)</span></label>
+          <label>Additional details <span style="font-weight:400;color:#888;">(optional)</span></label>
           <textarea id="f-cat-detail" placeholder="e.g. Which software? Since when? Any error message?" style="margin-top:5px; background:#fff;"></textarea>
         </div>
       </div>
 
       <div class="fg full">
         <label>Issue description <span class="req">*</span></label>
-        <textarea id="f-desc" placeholder="Describe the problem — e.g. 'Excel not opening', 'System not starting', 'Printer not connecting'..."></textarea>
+        <textarea id="f-desc" placeholder="Describe the problem clearly..."></textarea>
         <span class="err" id="e-desc">Required field</span>
       </div>
 
@@ -421,7 +386,7 @@
       </div>
     </div>
 
-    <!-- ── PRIORITY & ASSIGNMENT ── -->
+    <!-- PRIORITY -->
     <div class="section-row">
       <span class="section-pill pill-amber">Priority &amp; assignment</span>
       <div class="section-line"></div>
@@ -450,8 +415,8 @@
 
     <!-- BUTTONS -->
     <div class="btn-row">
-      <button class="btn-reset" onclick="resetForm()">Clear</button>
-      <button class="btn-submit" id="btn-submit" onclick="submitForm()">Submit ticket</button>
+      <button class="btn-reset" type="button" onclick="resetForm()">Clear</button>
+      <button class="btn-submit" type="button" id="btn-submit" onclick="submitForm()">Submit ticket</button>
     </div>
 
     <!-- SUCCESS -->
@@ -467,8 +432,8 @@
       <p id="error-msg">Something went wrong. Please try again or contact IT directly.</p>
     </div>
 
-  </div><!-- /form-body -->
-</div><!-- /card -->
+  </div>
+</div>
 
 <!-- MODAL -->
 <div class="modal-overlay" id="modal-overlay">
@@ -476,24 +441,23 @@
     <p class="modal-title" id="modal-title">Add new department</p>
     <input type="text" id="modal-input" placeholder="Enter name...">
     <div class="modal-btns">
-      <button class="modal-cancel" onclick="closeModal()">Cancel</button>
-      <button class="modal-add"    onclick="saveModal()">Add</button>
+      <button class="modal-cancel" type="button" onclick="closeModal()">Cancel</button>
+      <button class="modal-add" type="button" onclick="saveModal()">Add</button>
     </div>
   </div>
 </div>
 
 <script>
-  // ════════════════════════════════════════════════════
-  //  CONFIGURATION — Sirf yahi URL change karna hai
-  // ════════════════════════════════════════════════════
-  const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbytsRSnJVXSL6QjTQk2Q3VuGPoSzpt4GljQigD15Gr73E3UxSEJ5Fj_BZBeLUi0v7hYbw/exec";
-  const IT_EMAIL = "dadarsuraj2000@gmail.com";
-</script>
+  // ══════════════════════════════════════════════════════
+  //  CONFIGURATION — Sirf GOOGLE_SCRIPT_URL change karo
+  //  Apna deployed GAS Web App URL yahan paste karo
+  // ══════════════════════════════════════════════════════
+  const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx0fGlUXXz12PGEV6vlCAdwUA3HvLZw_QSoEPPxIrrVN_IfkLoiZWN6GE72ILB6vc2lAQ/exec";
+  const IT_EMAIL_DISPLAY  = "dadarsuraj2000@gmail.com";
 
-<script>
   // ── Data ──
   const depts = ["Account","Admin","Revenue","B2C","Director's","F&B","GM","HR","IT","Management","Marketing","MIS","Sales","Stoke"];
-  const locs   = ["Moustache HQ","Moustache Jaipur","Moustache Rishikesh","Moustache Mussoorie","Select Rishikesh"];
+  const locs  = ["Moustache HQ","Moustache Jaipur","Moustache Rishikesh","Moustache Mussoorie","Select Rishikesh"];
   let selectedCat = "";
   let modalType   = "";
 
@@ -507,8 +471,6 @@
   populateSelect("f-dept", depts);
   populateSelect("f-loc",  locs);
   document.getElementById("f-date").value = new Date().toISOString().split("T")[0];
-
-  // Auto-fill current time
   const now = new Date();
   document.getElementById("f-time").value =
     String(now.getHours()).padStart(2,'0') + ":" + String(now.getMinutes()).padStart(2,'0');
@@ -536,17 +498,14 @@
       populateSelect("f-loc", locs);
       document.getElementById("f-loc").value = v;
     } else if (modalType === "cat") {
-      // Add to "Other" optgroup in category dropdown
-      const catSel = document.getElementById("f-cat");
+      const catSel    = document.getElementById("f-cat");
       const customVal = "Other – " + v;
-      // Check if already exists
-      const exists = Array.from(catSel.options).some(o => o.value === customVal);
+      const exists    = Array.from(catSel.options).some(o => o.value === customVal);
       if (!exists) {
-        // Insert before the last two options (Other Issue + Add custom)
-        const newOpt = new Option(v, customVal);
-        const lastOptgroup = catSel.querySelector('optgroup:last-of-type');
-        const addMoreOpt = Array.from(lastOptgroup.options).find(o => o.value === "__add_more__");
-        lastOptgroup.insertBefore(newOpt, addMoreOpt);
+        const newOpt    = new Option(v, customVal);
+        const lastGroup = catSel.querySelector('optgroup:last-of-type');
+        const addMoreOpt= Array.from(lastGroup.options).find(o => o.value === "__add_more__");
+        lastGroup.insertBefore(newOpt, addMoreOpt);
       }
       catSel.value = customVal;
       selectCat(customVal);
@@ -555,16 +514,16 @@
   }
   document.getElementById("modal-input").addEventListener("keydown", e => { if (e.key === "Enter") saveModal(); });
 
-  // ── Category Dropdown ──
+  // ── Category ──
   const catTagMap = {
-    "Software": { label: "💻 Software", cls: "tag-sw" },
-    "Hardware": { label: "🖥️ Hardware", cls: "tag-hw" },
-    "Network":  { label: "🌐 Network",  cls: "tag-net" },
-    "Security": { label: "🔐 Security", cls: "tag-sec" },
-    "Telephony":{ label: "📞 Telephony",cls: "tag-tel" },
-    "Data":     { label: "💾 Data",     cls: "tag-data" },
-    "Request":  { label: "🆕 Request",  cls: "tag-net" },
-    "Other":    { label: "🔧 Other",    cls: "tag-other" },
+    "Software":  { label: "💻 Software",  cls: "tag-sw" },
+    "Hardware":  { label: "🖥️ Hardware",  cls: "tag-hw" },
+    "Network":   { label: "🌐 Network",   cls: "tag-net" },
+    "Security":  { label: "🔐 Security",  cls: "tag-sec" },
+    "Telephony": { label: "📞 Telephony", cls: "tag-tel" },
+    "Data":      { label: "💾 Data",      cls: "tag-data" },
+    "Request":   { label: "🆕 Request",   cls: "tag-net" },
+    "Other":     { label: "🔧 Other",     cls: "tag-other" },
   };
 
   function selectCat(val) {
@@ -575,20 +534,19 @@
     }
     selectedCat = val;
     document.getElementById("e-cat").style.display = "none";
-    const sub = document.getElementById("cat-sub-details");
+    const sub   = document.getElementById("cat-sub-details");
     const badge = document.getElementById("cat-tag-badge");
     if (val) {
-      const prefix = val.split("–")[0].trim().split(" – ")[0].trim();
+      const prefix  = val.split("–")[0].trim().split(" – ")[0].trim();
       const tagInfo = catTagMap[prefix] || { label: "🔧 " + prefix, cls: "tag-other" };
       badge.textContent = tagInfo.label;
-      badge.className = "cat-tag " + tagInfo.cls;
+      badge.className   = "cat-tag " + tagInfo.cls;
       sub.classList.add("show");
     } else {
       sub.classList.remove("show");
     }
   }
 
-  // ── Custom Category Modal ──
   function openCatModal() {
     modalType = "cat";
     document.getElementById("modal-title").textContent = "Add custom category";
@@ -606,62 +564,59 @@
   // ── Validate ──
   function validate() {
     let ok = true;
-    if (!g("f-name"))                                         { showErr("e-name");   ok = false; } else hideErr("e-name");
-    if (!/^\d{10}$/.test(g("f-mobile")))                     { showErr("e-mobile"); ok = false; } else hideErr("e-mobile");
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(g("f-email")))   { showErr("e-email"); ok = false; } else hideErr("e-email");
-    if (!g("f-dept"))                                         { showErr("e-dept");   ok = false; } else hideErr("e-dept");
-    if (!g("f-loc"))                                          { showErr("e-loc");    ok = false; } else hideErr("e-loc");
-    if (!selectedCat)                                         { showErr("e-cat");    ok = false; } else hideErr("e-cat");
-    if (!g("f-desc"))                                         { showErr("e-desc");   ok = false; } else hideErr("e-desc");
-    if (!g("f-date"))                                         { showErr("e-date");   ok = false; } else hideErr("e-date");
-    if (!g("f-time"))                                         { showErr("e-time");   ok = false; } else hideErr("e-time");
+    if (!g("f-name"))                                       { showErr("e-name");   ok = false; } else hideErr("e-name");
+    if (!/^\d{10}$/.test(g("f-mobile")))                   { showErr("e-mobile"); ok = false; } else hideErr("e-mobile");
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(g("f-email"))) { showErr("e-email");  ok = false; } else hideErr("e-email");
+    if (!g("f-dept"))                                       { showErr("e-dept");   ok = false; } else hideErr("e-dept");
+    if (!g("f-loc"))                                        { showErr("e-loc");    ok = false; } else hideErr("e-loc");
+    if (!selectedCat)                                       { showErr("e-cat");    ok = false; } else hideErr("e-cat");
+    if (!g("f-desc"))                                       { showErr("e-desc");   ok = false; } else hideErr("e-desc");
+    if (!g("f-date"))                                       { showErr("e-date");   ok = false; } else hideErr("e-date");
+    if (!g("f-time"))                                       { showErr("e-time");   ok = false; } else hideErr("e-time");
     return ok;
   }
 
   // ── Submit ──
-  // ────────────────────────────────────────────────────────
-  //  WHY no-cors?
-  //  Google Apps Script Web App CORS headers allow nahi karta
-  //  jab tak response type "text/plain" na ho. isliye hum
-  //  no-cors bhejte hain — request JAATI HAI, response nahi
-  //  milta — yeh expected behaviour hai. Sheet + emails sab
-  //  kaam karte hain.
-  // ────────────────────────────────────────────────────────
+  // NOTE: Google Apps Script CORS allow nahi karta POST ke liye,
+  // isliye no-cors mode use kiya gaya hai. Request server tak
+  // pahunchti hai — response sirf browser side nahi milta.
+  // Yeh GAS ka expected behaviour hai.
   async function submitForm() {
     document.getElementById("success-box").style.display = "none";
     document.getElementById("error-box").style.display   = "none";
     if (!validate()) return;
 
     const btn = document.getElementById("btn-submit");
-    btn.disabled = true;
+    btn.disabled  = true;
     btn.innerHTML = '<span class="spinner"></span>Submitting...';
 
-    // Unique ticket ID: TKT-YYYYMMDD-XXXXXX
-    const d = new Date();
+    // Unique Ticket ID: TKT-YYYYMMDD-XXXX
+    const d      = new Date();
     const dateStr = d.getFullYear().toString() +
       String(d.getMonth()+1).padStart(2,'0') +
       String(d.getDate()).padStart(2,'0');
     const ticketId = "TKT-" + dateStr + "-" + Date.now().toString().slice(-4);
 
     const payload = {
-      ticket_id     : ticketId,
-      employee_name : g("f-name"),
-      asset_id      : g("f-asset") || "N/A",
-      mobile        : g("f-mobile"),
-      employee_email: g("f-email"),
-      department    : g("f-dept"),
-      location      : g("f-loc"),
-      category      : selectedCat,
+      ticket_id      : ticketId,
+      employee_name  : g("f-name"),
+      asset_id       : g("f-asset") || "N/A",
+      mobile         : g("f-mobile"),
+      employee_email : g("f-email"),
+      department     : g("f-dept"),
+      location       : g("f-loc"),
+      category       : selectedCat,
       category_detail: document.getElementById("f-cat-detail").value.trim() || "N/A",
-      description   : g("f-desc"),
-      date          : g("f-date"),
-      time          : g("f-time"),
-      priority      : g("f-priority"),
-      remarks       : g("f-remarks") || "None",
+      description    : g("f-desc"),
+      date           : g("f-date"),
+      time           : g("f-time"),
+      priority       : g("f-priority"),
+      remarks        : g("f-remarks") || "None",
     };
 
     try {
-      // no-cors: response opaque rahega — yeh normal hai GAS ke saath
+      // no-cors: GAS ke saath standard approach hai
+      // request jaati hai — response opaque milta hai (yeh normal hai)
       await fetch(GOOGLE_SCRIPT_URL, {
         method : "POST",
         mode   : "no-cors",
@@ -669,20 +624,20 @@
         body   : JSON.stringify(payload),
       });
 
-      // Fetch no-cors mein throw nahi karta, isliye yahan aana = request gayi
+      // no-cors throw nahi karta — matlab request successfully gayi
       document.getElementById("ticket-id").textContent = "✅ Ticket ID: " + ticketId;
       document.getElementById("s-email").textContent   = g("f-email");
       document.getElementById("success-box").style.display = "block";
       document.getElementById("success-box").scrollIntoView({ behavior: "smooth" });
 
     } catch (err) {
-      // Tabhi aayega jab internet hi nahi ho
+      // Sirf tab aayega jab internet nahi ho
       console.error(err);
       document.getElementById("error-msg").textContent =
-        "⚠️ Network error. Internet connection check karein ya IT ko seedha contact karein: " + IT_EMAIL;
+        "⚠️ Network error. Internet connection check karein ya IT ko seedha contact karein: " + IT_EMAIL_DISPLAY;
       document.getElementById("error-box").style.display = "block";
     } finally {
-      btn.disabled = false;
+      btn.disabled  = false;
       btn.innerHTML = "Submit ticket";
     }
   }
